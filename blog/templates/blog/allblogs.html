@@ -35,7 +35,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Omar Jimenez</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Omar Jimenez</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,45 +43,26 @@
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/omarnjimenez">LinkedIn</a>
           <a class="nav-item nav-link" href="{% static 'Omar Jimenez Resume.pdf' %}">Resume</a>
-          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link active" href="#">Blog</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main role="main">
-
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hola! Soy Omar Jimenez</h1>
-        <p class="lead text-muted">Me llamo Omar y me gusta hacer sitios Django! Es super interesante!</p>
-        <p>
-          <a href="mailto:omar.n.jimenez@gmail.com" class="btn btn-primary my-2">Mandame un Email!</a>
-        </p>
-        <img src="{% static 'Omar.jpg' %}" width = 400 />
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row">
-
-          {% for x in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img class="card-img-top img-fluid" height="200" src="{{ x.image.url }}" />
-              <div class="card-body">
-                <p class="card-text"> {{ x.summary }} </p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-        </div>
-      </div>
+    <div class='container'>
+      <h1 class='text-center pt-5'>Bienvenido a mi Blog</h1>
+      <br />
+      <h2>Ultimos posts:</h2>
+        {% for x in allblogs.all %}
+          <a href=''> <h3> {{ x.title }} </h3> </a>
+          {{ x.modifieddate }}
+          <br />
+          <img class="img-fluid" src='{{ x.image.url }}' width=300 height=200 />
+          <p>{{ x.blogsummary }}</p>
+        {% endfor %}
+      <hr />
     </div>
-
   </main>
 
   <footer class="text-muted">
