@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.5">
-  <title>Album example · Bootstrap</title>
+  <title>Omar Jimenez - Blogs!</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -41,7 +41,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="https://www.linkedin.com/in/omarnjimenez">LinkedIn</a>
+          <a class="nav-item nav-link" href="https://www.linkedin.com/in/omarnjimenez"  target="_blank">LinkedIn</a>
           <a class="nav-item nav-link" href="{% static 'Omar Jimenez Resume.pdf' %}">Resume</a>
           <a class="nav-item nav-link active" href="#">Blog</a>
         </div>
@@ -55,10 +55,10 @@
       <br />
       <h2>Ultimos posts:</h2>
         {% for x in allblogs.all %}
-          <a href=''> <h3> {{ x.title }} </h3> </a>
+          <a href="{% url 'detail' x.id %}"> <h3> {{ x.title }} </h3> </a>
           {{ x.modifieddate }}
           <br />
-          <img class="img-fluid" src='{{ x.image.url }}' width=300 height=200 />
+          <img class="img-fluid" src='{{ x.image.url }}' width=100 />
           <p>{{ x.blogsummary }}</p>
         {% endfor %}
       <hr />
